@@ -1,0 +1,40 @@
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+░░░░░░░░░░░░░░░░░░░░░░░░░ SORTED LIST/AVL TREE DATABASE ░░░░░░░░░░░░░░░░░░░░░░░░░░
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Enter the number of IDs you want to test
+(Less than 1000 for SortedList/Greater for AVL Tree):  100
+100 IDs were randomly generated and added to the list; Time Taken: 6.0ms.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Want to test again? (Y/Yes for yes, anything else for no): ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Enter the number of IDs you want to test
+(Less than 1000 for SortedList/Greater for AVL Tree):  999
+999 IDs were randomly generated and added to the list; Time Taken: 12.0ms.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Want to test again? (Y/Yes for yes, anything else for no): ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Enter the number of IDs you want to test
+(Less than 1000 for SortedList/Greater for AVL Tree):  1000
+1000 IDs were randomly generated and added to the list; Time Taken: 5.0ms.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Want to test again? (Y/Yes for yes, anything else for no): ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Enter the number of IDs you want to test
+(Less than 1000 for SortedList/Greater for AVL Tree):  10000
+10000 IDs were randomly generated and added to the list; Time Taken: 7.0ms.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Want to test again? (Y/Yes for yes, anything else for no): ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Enter the number of IDs you want to test
+(Less than 1000 for SortedList/Greater for AVL Tree):  1000000
+1000000 IDs were randomly generated and added to the list; Time Taken: 1112.0ms.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Want to test again? (Y/Yes for yes, anything else for no): ==================================================================================
+Size of structure for test file 1: 341236
+Size of structure for test file 2: 340855
+Size of structure for test file 3: 597266
+==================================================================================
+Time taken for test file 1: 443.0ms.
+Time taken for test file 2: 443.0ms.
+Time taken for test file 3: 781.0ms.
+
+==================================================================================
+▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ END ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾

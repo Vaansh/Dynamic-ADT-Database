@@ -1,0 +1,12 @@
+Sorted Sequence ADT based on arraylsit:
+	Time Complexity: O(nlogn)
+	Space Complexity: O(n)
+
+AVL Tree ADT:
+	Time Complexity: O(logn)
+	Space Complexity: O(n)
+
+
+IntelligentSIDC ADT uses a sorted sequence based on an arraylist for small (up to 1000), it is sorted using binary search algorithm.
+
+Above 1000, an AVL Tree is used. This is because it is more efficient. IntelligentSIDC class calls methods accordingly.

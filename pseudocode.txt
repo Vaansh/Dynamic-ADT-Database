@@ -1,0 +1,158 @@
+SortedSequence
+
+Algorithm allKeys()
+Output return all keys in IntelligentSIDC as a sorted sequence
+AList<Integer> all = new AList<Integer>()
+for (int i = 0; i < student.size(); i++)
+	all.add(student.get(i).getKey())
+return all
+
+
+Algorithm add(int k, String v)
+Input key,value
+Output add an entry for the given key and value
+if (binarySearch(student, 0, student.size() - 1, k) != -1)
+	return false;
+Student s = new Student(k,v);
+if(j == 0)
+	student.add(s);
+else
+	while (j>0)
+		if(k>student.get(j-1).getKey())
+			break;
+		j--;
+		student.add(j,s)
+	return true;
+return false;
+
+
+Algorithm remove(int key)
+Input key
+Output remove the entry for the given key
+Declare ind = binarySearch(student, 0, student.size()-1,key)
+if (ind == -1)
+	return false;
+else
+	student.remove(ind)
+return true;
+
+
+Algorithm getValues(int k)
+Input key
+Output return the values of the given key
+Declare keyIndex = binarySearch(student, 0, student.size()-1,k)
+if(keyIndex==-1)
+	return "No such record exists."
+return student.get(keyIndex).getValue()
+
+
+Algorithm nextKey(int k)
+Input key
+Output return the key for the successor of key
+Declare keyIndex = binarySearch(student, 0, student.size()-1,k)
+if(keyIndex==-1 || ++keyIndex==student.size())
+	return -1;
+return student.get(keyIndex).getKey()
+
+
+Algorithm int prevKey(int k)
+Input key
+Output return the key for the predecessor of key;
+Declare keyIndex := binarySearch(student, 0, student.size()-1,k)
+if(keyIndex=-1 or keyIndex=0)
+	return -1;
+return student.get(--keyIndex).getKey()
+
+
+Algorithm rangeKey(int k1, int k2)
+Input k1, k2 keys
+Output returns the number of keys that are within the specified range of the two keys key1 and key2
+Declare range := -1;
+Declare ink1 := binarySearch(student, 0, student.size()-1,k1)
+Declare ink2 := binarySearch(student, 0, student.size()-1,k2)
+if(ink1<ink2)
+	while (ink1<ink2)
+		range+=1;
+		ink1+=1;
+return range;
+
+
+AVL Tree ADT
+
+Algorithm allKeys()
+AList<Integer> all = new AList<Integer>()
+addAllKeys(all, root);
+return all;
+
+
+Algorithm add(int k, String v)
+Input key,value
+Output add an entry for the given key and value
+if(value == null)
+	return false;
+if(!contains(root, value))
+	root = add(root, value);
+	nodeCount++;
+	return true;
+else
+	return false;
+
+
+Algorithm remove(int key)
+Input key
+Output remove the entry for the given key
+if (node == null)
+	return null;
+int position = value.compareTo(node.value);
+if (position < 0)
+	node.left = remove(node.left, value);
+else if (position > 0)
+	node.right = remove(node.right, value);
+else
+	if(node.left == null)
+		return node.right
+	else if(node.right == null)
+		return node.left
+	else
+		if(node.left.height > node.right.height)
+                    Student next = findMax(node.left)
+                    node.value = next
+                    node.left = remove(node.left, next)
+                else
+                    Student next = findMin(node.right)
+                    node.value = next
+                    node.right = remove(node.right, next)
+updateHBF(node);
+return balance(node);
+
+
+
+Algorithm getValues(int k)
+Input key
+Output return the values of the given key
+        return getValues(root, key);
+
+
+Algorithm nextKey(int k)
+Input key
+Output return the key for the successor of key
+        return nextKey(root, key);
+
+
+Algorithm int prevKey(int k)
+Input key
+Output return the key for the predecessor of key;
+	return prevKey(root, key)
+
+
+Algorithm rangeKey(int k1, int k2)
+Input k1, k2 keys
+Output returns the number of keys that are within the specified range of the two keys key1 and key2
+int range = 0;
+Node node1 = getNode(root, k1);
+Node node2 = getNode(root, k2);
+if(node1 == null || node2 == null)
+	return range;
+AList<Integer> num = new AList<>();
+num = inRangeNodes(num, node1, node2);
+return num.size();
