@@ -3,8 +3,7 @@
  * Consists of methods and
  * data to store.
  */
-public class Student
-{
+public class Student {
     private int key;
     private String value;
 
@@ -12,8 +11,7 @@ public class Student
      * Default constructor.
      * Initializes values of all the variables.
      */
-    public Student()
-    {
+    public Student() {
         key = -1;
         value = "";
     }
@@ -21,11 +19,11 @@ public class Student
     /**
      * Parameterized constructor.
      * Sets values of all the variables.
+     *
      * @param k Key.
      * @param v Value.
      */
-    public Student(int k, String v)
-    {
+    public Student(int k, String v) {
         key = k;
         value = v;
     }
@@ -35,8 +33,7 @@ public class Student
      *
      * @return key.
      */
-    public int getKey()
-    {
+    public int getKey() {
         return key;
     }
 
@@ -45,16 +42,14 @@ public class Student
      *
      * @return value value.
      */
-    public String getValue()
-    {
+    public String getValue() {
         return value;
     }
 
     /**
      * String form of information.
      */
-    public String toString()
-    {
+    public String toString() {
         return "Key: " + key + " Value: " + value + "\n";
     }
 
@@ -65,16 +60,11 @@ public class Student
      * @return Numerical value of student comparison.
      */
     public int compareTo(Student student) {
-        if(getKey() > student.getKey())
-        {
+        if (getKey() > student.getKey()) {
             return 1;
-        }
-        else if (getKey() < student.getKey())
-        {
+        } else if (getKey() < student.getKey()) {
             return -1;
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }

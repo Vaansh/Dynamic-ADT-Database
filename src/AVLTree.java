@@ -2,61 +2,7 @@
  * AVLTree class with
  * required methods.
  */
-public class AVLTree
-{
-    /**
-     * Node class.
-     */
-    class Node
-    {
-        public int balance;
-        public Student value;
-        public int height;
-        public Node left, right;
-
-        /**
-         * Parameterized constructor.
-         *
-         * @param value Student value.
-         */
-        public Node(Student value)
-        {
-            this.value = value;
-        }
-
-        /**
-         * Accessor method.
-         */
-        public Student getValue()
-        {
-            return value;
-        }
-
-        /**
-         * Accessor method.
-         */
-        public Node getLeft()
-        {
-            return left;
-        }
-
-        /**
-         * Accessor method.
-         */
-        public Node getRight()
-        {
-            return right;
-        }
-
-        /**
-         * String form of information.
-         */
-        public String toString()
-        {
-            return value.toString();
-        }
-    }
-
+public class AVLTree {
     public Node root;
     public int nodeCount = 0;
 
@@ -65,8 +11,7 @@ public class AVLTree
      *
      * @return AList of integer keys.
      */
-    public AList<Integer> allKeys()
-    {
+    public AList<Integer> allKeys() {
         AList<Integer> all = new AList<Integer>();
         addAllKeys(all, root);
         return all;
@@ -75,17 +20,14 @@ public class AVLTree
     /**
      * addAllKeys method.
      *
-     * @param a AList.
+     * @param a    AList.
      * @param node Node.
      * @return AList value of integers.
      */
     public AList<Integer> addAllKeys(AList<Integer> a, Node node) {
-        if (node == null)
-        {
+        if (node == null) {
             return a;
-        }
-        else
-        {
+        } else {
             addAllKeys(a, node.left);
             a.add(node.value.getKey());
             addAllKeys(a, node.right);
@@ -100,8 +42,7 @@ public class AVLTree
      * @param v value.
      * @return boolean status of addition.
      */
-    public boolean add(int k, String v)
-    {
+    public boolean add(int k, String v) {
         return add(new Student(k, v));
     }
 
@@ -111,20 +52,15 @@ public class AVLTree
      * @param value Student value.
      * @return boolean status of addition.
      */
-    public boolean add(Student value)
-    {
-        if(value == null)
-        {
+    public boolean add(Student value) {
+        if (value == null) {
             return false;
         }
-        if(!contains(root, value))
-        {
+        if (!contains(root, value)) {
             root = add(root, value);
             nodeCount++;
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -132,25 +68,20 @@ public class AVLTree
     /**
      * Helper to add emthod.
      *
-     * @param node Node.
+     * @param node  Node.
      * @param value Value of student.
      * @return
      */
-    private Node add(Node node, Student value)
-    {
-        if(node == null)
-        {
+    private Node add(Node node, Student value) {
+        if (node == null) {
             return new Node(value);
         }
 
         int position = value.compareTo(node.value);
 
-        if(position < 0)
-        {
-            node.left = add(node.left,value);
-        }
-        else
-        {
+        if (position < 0) {
+            node.left = add(node.left, value);
+        } else {
             node.right = add(node.right, value);
         }
 
@@ -165,8 +96,7 @@ public class AVLTree
      * @param key key to remove.
      * @return boolean status of removal.
      */
-    public boolean remove(int key)
-    {
+    public boolean remove(int key) {
         return remove(new Student(key, ""));
     }
 
@@ -176,10 +106,8 @@ public class AVLTree
      * @param value Value of student.
      * @return boolean status of removal.
      */
-    private boolean remove(Student value)
-    {
-        if(contains(root, value))
-        {
+    private boolean remove(Student value) {
+        if (contains(root, value)) {
             root = remove(root, value);
         }
         return false;
@@ -188,47 +116,32 @@ public class AVLTree
     /**
      * Helper to remove method.
      *
-     * @param node Node.
+     * @param node  Node.
      * @param value Value of student.
      * @return boolean status of removal.
      */
-    private Node remove(Node node, Student value)
-    {
-        if (node == null)
-        {
+    private Node remove(Node node, Student value) {
+        if (node == null) {
             return null;
         }
 
         int position = value.compareTo(node.value);
 
-        if (position < 0)
-        {
+        if (position < 0) {
             node.left = remove(node.left, value);
-        }
-        else if (position > 0)
-        {
+        } else if (position > 0) {
             node.right = remove(node.right, value);
-        }
-        else
-        {
-            if(node.left == null)
-            {
+        } else {
+            if (node.left == null) {
                 return node.right;
-            }
-            else if(node.right == null)
-            {
+            } else if (node.right == null) {
                 return node.left;
-            }
-            else
-            {
-                if(node.left.height > node.right.height)
-                {
+            } else {
+                if (node.left.height > node.right.height) {
                     Student next = findMax(node.left);
                     node.value = next;
                     node.left = remove(node.left, next);
-                }
-                else
-                {
+                } else {
                     Student next = findMin(node.right);
                     node.value = next;
                     node.right = remove(node.right, next);
@@ -245,8 +158,7 @@ public class AVLTree
      * @param key key.
      * @return String value, if exists.
      */
-    public String getValues(int key)
-    {
+    public String getValues(int key) {
         return getValues(root, key);
     }
 
@@ -254,17 +166,13 @@ public class AVLTree
      * Helper to getValues method.
      *
      * @param node Node.
-     * @param key key.
+     * @param key  key.
      * @return String value, if exists.
      */
-    private String getValues(Node node, int key)
-    {
-        if(node.value.getKey() == key)
-        {
+    private String getValues(Node node, int key) {
+        if (node.value.getKey() == key) {
             return node.value.getValue();
-        }
-        else
-        {
+        } else {
             getValues(node.left, key);
             getValues(node.right, key);
         }
@@ -277,8 +185,7 @@ public class AVLTree
      * @param key key.
      * @return next key.
      */
-    public int nextKey(int key)
-    {
+    public int nextKey(int key) {
         return nextKey(root, key);
     }
 
@@ -286,24 +193,17 @@ public class AVLTree
      * Helper to nextKey method.
      *
      * @param node Node.
-     * @param key key.
+     * @param key  key.
      * @return next key.
      */
-    private int nextKey(Node node, int key)
-    {
-        if(node.value.getKey() == key)
-        {
-            if(node.right.value.getKey() != 0)
-            {
+    private int nextKey(Node node, int key) {
+        if (node.value.getKey() == key) {
+            if (node.right.value.getKey() != 0) {
                 return node.right.value.getKey();
-            }
-            else
-            {
+            } else {
                 return -2;
             }
-        }
-        else
-        {
+        } else {
             nextKey(node.left, key);
             nextKey(node.right, key);
         }
@@ -316,8 +216,7 @@ public class AVLTree
      * @param key key.
      * @return previous key.
      */
-    public int prevKey(int key)
-    {
+    public int prevKey(int key) {
         return prevKey(root, key);
     }
 
@@ -325,17 +224,13 @@ public class AVLTree
      * Helper to prevKey method.
      *
      * @param node Node.
-     * @param key key.
+     * @param key  key.
      * @return previous key.
      */
-    private int prevKey(Node node, int key)
-    {
-        if(node.left.value.getKey() == key ||node.right.value.getKey() == key)
-        {
+    private int prevKey(Node node, int key) {
+        if (node.left.value.getKey() == key || node.right.value.getKey() == key) {
             return node.value.getKey();
-        }
-        else
-        {
+        } else {
             prevKey(node.left, key);
             prevKey(node.right, key);
         }
@@ -349,13 +244,11 @@ public class AVLTree
      * @param k2 key 2.
      * @return number of keys between k1 and k2.
      */
-    public int rangeKey(int k1, int k2)
-    {
+    public int rangeKey(int k1, int k2) {
         int range = 0;
         Node node1 = getNode(root, k1);
         Node node2 = getNode(root, k2);
-        if(node1 == null || node2 == null)
-        {
+        if (node1 == null || node2 == null) {
             return range;
         }
         AList<Integer> num = new AList<>();
@@ -367,18 +260,15 @@ public class AVLTree
      * inRangeNodes method
      * helper to rangeKey.
      *
-     * @param a AList.
+     * @param a     AList.
      * @param node1 Node.
      * @param node2 Node.
      * @return number of keys between k1 and k2.
      */
     private AList<Integer> inRangeNodes(AList<Integer> a, Node node1, Node node2) {
-        if (node1 == node2)
-        {
+        if (node1 == node2) {
             return a;
-        }
-        else
-        {
+        } else {
             inRangeNodes(a, node1.left, node2);
             a.add(node1.value.getKey());
             inRangeNodes(a, node1.right, node2);
@@ -391,17 +281,13 @@ public class AVLTree
      * to inRangeNodes.
      *
      * @param node Node.
-     * @param k key.
+     * @param k    key.
      * @return Node at key.
      */
-    private Node getNode(Node node, int k)
-    {
-        if(node.value.getKey() == k)
-        {
+    private Node getNode(Node node, int k) {
+        if (node.value.getKey() == k) {
             return node;
-        }
-        else
-        {
+        } else {
             getNode(node.left, k);
             getNode(node.right, k);
         }
@@ -413,10 +299,8 @@ public class AVLTree
      *
      * @return integer value of height.
      */
-    public int height()
-    {
-        if (root == null)
-        {
+    public int height() {
+        if (root == null) {
             return 0;
         }
         return root.height;
@@ -427,8 +311,7 @@ public class AVLTree
      *
      * @return size.
      */
-    public int size()
-    {
+    public int size() {
         return nodeCount;
     }
 
@@ -437,8 +320,7 @@ public class AVLTree
      *
      * @return boolean value of empty status.
      */
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return size() == 0;
     }
 
@@ -448,34 +330,29 @@ public class AVLTree
      * @param value Student.
      * @return status of existence in tree.
      */
-    public boolean contains(Student value)
-    {
+    public boolean contains(Student value) {
         return contains(root, value);
     }
 
     /**
      * Helper to contains method.
      *
-     * @param node Node.
+     * @param node  Node.
      * @param value Student.
      * @return status of existence in tree.
      */
-    private boolean contains(Node node, Student value)
-    {
-        if(node == null)
-        {
+    private boolean contains(Node node, Student value) {
+        if (node == null) {
             return false;
         }
 
         int position = value.compareTo(node.value);
 
-        if(position < 0)
-        {
+        if (position < 0) {
             return contains(node.left, value);
         }
 
-        if(position > 0)
-        {
+        if (position > 0) {
             return contains(node.right, value);
         }
 
@@ -488,10 +365,8 @@ public class AVLTree
      * @param node Node.
      * @return Min student.
      */
-    private Student findMin(Node node)
-    {
-        while (node.left != null)
-        {
+    private Student findMin(Node node) {
+        while (node.left != null) {
             node = node.left;
         }
         return node.value;
@@ -503,10 +378,8 @@ public class AVLTree
      * @param node Node.
      * @return Max student.
      */
-    private Student findMax(Node node)
-    {
-        while (node.right != null)
-        {
+    private Student findMax(Node node) {
+        while (node.right != null) {
             node = node.right;
         }
         return node.value;
@@ -517,8 +390,7 @@ public class AVLTree
      *
      * @param node Node to update balance factor.
      */
-    private void updateHBF(Node node)
-    {
+    private void updateHBF(Node node) {
         int left = (node.left == null) ? -1 : node.left.height;
         int right = (node.right == null) ? -1 : node.right.height;
 
@@ -532,27 +404,17 @@ public class AVLTree
      * @param node Node.
      * @return Node.
      */
-    private Node balance(Node node)
-    {
-        if(node.balance == -2)
-        {
-            if(node.left.balance <=0)
-            {
+    private Node balance(Node node) {
+        if (node.balance == -2) {
+            if (node.left.balance <= 0) {
                 return caseLeftLeft(node);
-            }
-            else
-            {
+            } else {
                 return caseLeftRight(node);
             }
-        }
-        else if(node.balance == 2)
-        {
-            if(node.right.balance >=0)
-            {
+        } else if (node.balance == 2) {
+            if (node.right.balance >= 0) {
                 return caseRightRight(node);
-            }
-            else
-            {
+            } else {
                 return caseRightLeft(node);
             }
         }
@@ -565,8 +427,7 @@ public class AVLTree
      * @param node Node.
      * @return parent.
      */
-    private Node leftRotate(Node node)
-    {
+    private Node leftRotate(Node node) {
         Node parent = node.right;
         node.right = parent.left;
         parent.left = node;
@@ -581,8 +442,7 @@ public class AVLTree
      * @param node Node.
      * @return parent.
      */
-    private Node rightRotate(Node node)
-    {
+    private Node rightRotate(Node node) {
         Node parent = node.left;
         node.left = parent.right;
         parent.right = node;
@@ -597,8 +457,7 @@ public class AVLTree
      * @param node Node.
      * @return Corrected node.
      */
-    private Node caseLeftLeft(Node node)
-    {
+    private Node caseLeftLeft(Node node) {
         return rightRotate(node);
     }
 
@@ -608,8 +467,7 @@ public class AVLTree
      * @param node Node.
      * @return Corrected node.
      */
-    private Node caseLeftRight(Node node)
-    {
+    private Node caseLeftRight(Node node) {
         node.left = leftRotate(node.left);
         return caseLeftLeft(node);
     }
@@ -620,8 +478,7 @@ public class AVLTree
      * @param node Node.
      * @return Corrected node.
      */
-    private Node caseRightRight(Node node)
-    {
+    private Node caseRightRight(Node node) {
         return leftRotate(node);
     }
 
@@ -631,8 +488,7 @@ public class AVLTree
      * @param node Node.
      * @return Corrected node.
      */
-    private Node caseRightLeft(Node node)
-    {
+    private Node caseRightLeft(Node node) {
         node.right = rightRotate(node.right);
         return caseRightRight(node);
     }
@@ -644,5 +500,52 @@ public class AVLTree
      */
     public int getNodeCount() {
         return nodeCount;
+    }
+
+    /**
+     * Node class.
+     */
+    class Node {
+        public int balance;
+        public Student value;
+        public int height;
+        public Node left, right;
+
+        /**
+         * Parameterized constructor.
+         *
+         * @param value Student value.
+         */
+        public Node(Student value) {
+            this.value = value;
+        }
+
+        /**
+         * Accessor method.
+         */
+        public Student getValue() {
+            return value;
+        }
+
+        /**
+         * Accessor method.
+         */
+        public Node getLeft() {
+            return left;
+        }
+
+        /**
+         * Accessor method.
+         */
+        public Node getRight() {
+            return right;
+        }
+
+        /**
+         * String form of information.
+         */
+        public String toString() {
+            return value.toString();
+        }
     }
 }

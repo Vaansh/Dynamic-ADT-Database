@@ -2,22 +2,20 @@ import java.util.Random;
 
 /**
  * IntelligentSIDC class.
- *
+ * <p>
  * Holds methods to dynamically
  * determine appropriate datatype
  * and implement it.
  */
-public class IntelligentSIDC
-{
-    private int size;
+public class IntelligentSIDC {
     SortedSequence StudentRecordsSequence;
     AVLTree StudentRecordsTree;
+    private int size;
 
     /**
      * Default constructor.
      */
-    public IntelligentSIDC()
-    {
+    public IntelligentSIDC() {
         size = 0;
         StudentRecordsSequence = new SortedSequence();
         StudentRecordsTree = new AVLTree();
@@ -28,28 +26,22 @@ public class IntelligentSIDC
      *
      * @param s Size.
      */
-    public IntelligentSIDC(int s)
-    {
+    public IntelligentSIDC(int s) {
         SetSIDCThreshold(s);
-        if(s<1000)
-        {
+        if (s < 1000) {
             StudentRecordsSequence = new SortedSequence();
 
-            while(s>0)
-            {
+            while (s > 0) {
                 boolean added = false;
-                while(!added)
-                {
+                while (!added) {
                     added = StudentRecordsSequence.add(generate(), size % 2 == 0 ? "Alan Turing" : "Nikola Tesla");
                 }
                 s--;
             }
-        }
-        else
-        {
+        } else {
             StudentRecordsTree = new AVLTree();
 
-            while(s>0) {
+            while (s > 0) {
                 Student temp = new Student(generate(), "Alan Turing");
                 StudentRecordsTree.add(temp);
                 s--;
@@ -62,8 +54,7 @@ public class IntelligentSIDC
      *
      * @param s size to set threshhold.
      */
-    public void SetSIDCThreshold(int s)
-    {
+    public void SetSIDCThreshold(int s) {
         size = s;
     }
 
@@ -74,8 +65,7 @@ public class IntelligentSIDC
      *
      * @return Random 8-digit number.
      */
-    public int generate()
-    {
+    public int generate() {
         int min = 10000000, max = 100000000;
         Random rand = new Random();
         int l = rand.nextInt(max - min) + min;
@@ -87,14 +77,10 @@ public class IntelligentSIDC
      *
      * @return AList of integer keys.
      */
-    public AList<Integer> allKeys()
-    {
-        if(size > 1000)
-        {
+    public AList<Integer> allKeys() {
+        if (size > 1000) {
             return StudentRecordsTree.allKeys();
-        }
-        else
-        {
+        } else {
             return StudentRecordsSequence.allKeys();
         }
     }
@@ -102,43 +88,34 @@ public class IntelligentSIDC
     /**
      * add method.
      *
-     * @param key key.
+     * @param key   key.
      * @param value value.
      * @return boolean status of addition.
      */
-    public boolean add(int key,String value)
-    {
-        if(size > 1001)
-        {
-            if(StudentRecordsTree.add(key, value))
-            {
+    public boolean add(int key, String value) {
+        if (size > 1001) {
+            if (StudentRecordsTree.add(key, value)) {
                 size += 1;
                 return true;
             }
             return false;
-        }
-        else if(size == 1001)
-        {
-            size=0;
-            for(int i = 0; i < 1001; i++)
-            {
+        } else if (size == 1001) {
+            size = 0;
+            for (int i = 0; i < 1001; i++) {
                 size++;
                 StudentRecordsTree.add(StudentRecordsSequence.student.get(i).getKey(), StudentRecordsSequence.student.get(i).getValue());
             }
             StudentRecordsSequence.clear();
-            if(StudentRecordsTree.add(key, value))
-            {
+            if (StudentRecordsTree.add(key, value)) {
                 size++;
                 return true;
             }
             System.out.println(size);
             return false;
-        }
-        else
-        {
-            if(StudentRecordsSequence.add(key, value))
-            {
-                size += 1;;
+        } else {
+            if (StudentRecordsSequence.add(key, value)) {
+                size += 1;
+                ;
                 return true;
             }
             return false;
@@ -151,14 +128,10 @@ public class IntelligentSIDC
      * @param key key to remove.
      * @return boolean status of removal.
      */
-    public boolean remove(int key)
-    {
-        if(size > 1000)
-        {
+    public boolean remove(int key) {
+        if (size > 1000) {
             return StudentRecordsTree.remove(key);
-        }
-        else
-        {
+        } else {
             return StudentRecordsSequence.remove(key);
         }
     }
@@ -169,14 +142,10 @@ public class IntelligentSIDC
      * @param key key.
      * @return String value, if exists.
      */
-    public String getValues(int key)
-    {
-        if(size > 1000)
-        {
+    public String getValues(int key) {
+        if (size > 1000) {
             return StudentRecordsTree.getValues(key);
-        }
-        else
-        {
+        } else {
             return StudentRecordsSequence.getValues(key);
         }
     }
@@ -187,14 +156,10 @@ public class IntelligentSIDC
      * @param key key.
      * @return next key.
      */
-    public int nextKey(int key)
-    {
-        if(size > 1000)
-        {
+    public int nextKey(int key) {
+        if (size > 1000) {
             return StudentRecordsTree.nextKey(key);
-        }
-        else
-        {
+        } else {
             return StudentRecordsSequence.nextKey(key);
         }
     }
@@ -205,14 +170,10 @@ public class IntelligentSIDC
      * @param key key.
      * @return previous key.
      */
-    public int prevKey(int key)
-    {
-        if(size > 1000)
-        {
+    public int prevKey(int key) {
+        if (size > 1000) {
             return StudentRecordsTree.prevKey(key);
-        }
-        else
-        {
+        } else {
             return StudentRecordsSequence.prevKey(key);
         }
     }
@@ -224,14 +185,10 @@ public class IntelligentSIDC
      * @param key2 key 2.
      * @return number of keys between k1 and k2.
      */
-    public int rangeKey(int key1, int key2)
-    {
-        if(size > 1000)
-        {
+    public int rangeKey(int key1, int key2) {
+        if (size > 1000) {
             return StudentRecordsTree.rangeKey(key1, key2);
-        }
-        else
-        {
+        } else {
             return StudentRecordsSequence.rangeKey(key1, key2);
         }
     }
@@ -241,8 +198,7 @@ public class IntelligentSIDC
      *
      * @return size.
      */
-    public int getSize()
-    {
+    public int getSize() {
         return size;
     }
 

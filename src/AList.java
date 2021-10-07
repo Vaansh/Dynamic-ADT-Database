@@ -4,16 +4,14 @@
  * operations to perform
  * on a custom AList.
  */
-public class AList<Student>
-{
+public class AList<Student> {
     int size;
     private Student[] array;
 
     /**
      * Default constructor.
      */
-    public AList()
-    {
+    public AList() {
         array = (Student[]) new Object[10];
         size = 0;
     }
@@ -21,19 +19,16 @@ public class AList<Student>
     /**
      * add method.
      *
-     * @param index index to add at.
+     * @param index   index to add at.
      * @param element element to add.
      */
-    public void add(int index, Student element)
-    {
-        if (index < 0 || index > size)
-        {
+    public void add(int index, Student element) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         add(element);
-        for (int i=size-1; i>index; i--)
-        {
-            array[i] = array[i-1];
+        for (int i = size - 1; i > index; i--) {
+            array[i] = array[i - 1];
         }
         array[index] = element;
     }
@@ -44,24 +39,20 @@ public class AList<Student>
      * @param index index to get.
      * @return element at index.
      */
-    public Student get(int index)
-    {
-        if (index < 0 || index >= size)
-        {
+    public Student get(int index) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
         return array[index];
     }
 
     /**
-     * @param obj  object to remove.
+     * @param obj object to remove.
      * @return status of removal.
      */
-    public boolean remove(Object obj)
-    {
+    public boolean remove(Object obj) {
         int index = indexOf(obj);
-        if (index == -1)
-        {
+        if (index == -1) {
             return false;
         }
         remove(index);
@@ -71,12 +62,11 @@ public class AList<Student>
     /**
      * set method.
      *
-     * @param index index to replace.
+     * @param index   index to replace.
      * @param element element to replace.
      * @return Old student at index.
      */
-    public Student set(int index, Student element)
-    {
+    public Student set(int index, Student element) {
         Student old = get(index);
         array[index] = element;
         return old;
@@ -88,10 +78,8 @@ public class AList<Student>
      * @param element element to add.
      * @return status of adding.
      */
-    public boolean add(Student element)
-    {
-        if (size >= array.length)
-        {
+    public boolean add(Student element) {
+        if (size >= array.length) {
             Student[] bigger = (Student[]) new Object[array.length * 2];
             System.arraycopy(array, 0, bigger, 0, array.length);
             array = bigger;
@@ -107,12 +95,10 @@ public class AList<Student>
      * @param index position to remove.
      * @return Student at index.
      */
-    public Student remove(int index)
-    {
+    public Student remove(int index) {
         Student element = get(index);
-        for (int i=index; i<size-1; i++)
-        {
-            array[i] = array[i+1];
+        for (int i = index; i < size - 1; i++) {
+            array[i] = array[i + 1];
         }
         size--;
         return element;
@@ -121,18 +107,14 @@ public class AList<Student>
     /**
      * Checks equality of two objects.
      *
-     * @param target Target object.
+     * @param target  Target object.
      * @param element Element object.
      * @return boolean value of equality.
      */
-    private boolean equals(Object target, Object element)
-    {
-        if (target == null)
-        {
+    private boolean equals(Object target, Object element) {
+        if (target == null) {
             return element == null;
-        }
-        else
-        {
+        } else {
             return target.equals(element);
         }
     }
@@ -143,12 +125,9 @@ public class AList<Student>
      * @param target Object to get.
      * @return index of target.
      */
-    public int indexOf(Object target)
-    {
-        for (int i = 0; i<size; i++)
-        {
-            if (equals(target, array[i]))
-            {
+    public int indexOf(Object target) {
+        for (int i = 0; i < size; i++) {
+            if (equals(target, array[i])) {
                 return i;
             }
         }
@@ -160,8 +139,7 @@ public class AList<Student>
      *
      * @return boolean value of empty status.
      */
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -170,16 +148,14 @@ public class AList<Student>
      *
      * @return size.
      */
-    public int size()
-    {
+    public int size() {
         return size;
     }
 
     /**
      * clear method
      */
-    public void clear()
-    {
+    public void clear() {
         size = 0;
     }
 }
